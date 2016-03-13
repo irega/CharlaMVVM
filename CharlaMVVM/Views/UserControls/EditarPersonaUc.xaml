@@ -1,0 +1,27 @@
+﻿<UserControl
+    x:Class="CharlaMVVM.Views.UserControls.EditarPersonaUc"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="180"
+    d:DesignWidth="400"
+    DataContext="{Binding Source={StaticResource Locator}, Path=EditarPersona}">
+    <!--Tiene modelo de vista porque el control de usuario tiene negocio propio.-->
+
+    <Border  BorderBrush="#E4FF00" BorderThickness="2">
+        <Grid Margin="0.333,0.333,-0.667,0" Background="Black" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Nombre de la persona a editar.-->
+            <TextBlock x:Name="tbNombre" Text="Nombre:" FontSize="20" Height="20" Margin="26,20,270,129.167"/>
+            <TextBox x:Name="txtNombre" Text="{Binding NombrePersona, Mode=TwoWay}" Margin="133,13,20,0" />
+
+            <!--Botones del popup.-->
+            <Button x:Name="btnOK" Content="Aceptar" Command="{Binding GuardarDatosCommand}" Margin="26,98,0,14.167" />
+            <Button x:Name="btnCancel" Content="Cancelar" Command="{Binding CancelarDatosCommand}" Margin="234,96,0,16.167" />
+        </Grid>
+    </Border>
+</UserControl>

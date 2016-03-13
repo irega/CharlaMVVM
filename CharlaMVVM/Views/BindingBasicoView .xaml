@@ -1,0 +1,37 @@
+﻿<views:ViewBase
+    x:Class="CharlaMVVM.Views.BindingBasicoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="using:CharlaMVVM.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator},Path=BindingBasico}">
+    <!--Con DataContext enlazamos vista y modelo de vista mediante el Locator.-->
+
+    <Grid>
+        <StackPanel>
+            <!--Enlazamos la lista a la lista de Personas del modelo de vista-->
+            <!--En modo OneWay porque sólo vamos a refrescar desde el modelo de vista-->
+            <ListView x:Name="lstPersonas" ItemsSource="{Binding Personas, Mode=OneWay}" Margin="30,89,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="2">
+                            <TextBlock Text="Nombre:" FontSize="20"/>
+                            <!--El nombre de cada elemento lo vamos a modificar en la vista-->
+                            <!--Por tanto, para que el cambio se vea reflejado en el modelo debemos poner modo TwoWay-->
+                            <TextBox Text="{Binding Nombre, Mode=TwoWay}" Margin="100,-30,0,0" Width="150"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--Botón para reestablecer los datos iniciales de la lista.-->
+            <Button Content="Reestablecer lista" Command="{Binding ResetearCommand}" Margin="20,50,0,0" Height="20" />
+            <!--Botón para emitir un saludo a todas las personas que contiene el modelo de vista-->
+            <Button Content="Saludar a todos" Command="{Binding SaludarCommand}" Margin="200,-58,0,0" Height="20" />
+            <!--Cadena de texto con el saludo.-->
+            <TextBlock Text="{Binding Saludo, Mode=OneWay}" FontSize="20" Margin="10,10,10,10"/>
+        </StackPanel>
+    </Grid>
+</views:ViewBase>

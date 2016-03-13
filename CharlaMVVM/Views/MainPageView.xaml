@@ -1,0 +1,27 @@
+﻿<views:ViewBase
+    x:Class="CharlaMVVM.Views.MainPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="using:CharlaMVVM.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+
+    <Grid>
+        <StackPanel>
+            <!--Botón para navegar a la vista de ejemplo básico de uso de Commands.-->
+            <Button Content="CommandBasico" Command="{Binding IrACommandBasicoCommand}" Margin="20,50,0,0" Width="200" />
+
+            <!--Botón para navegar a la vista de ejemplo básico de Binding.-->
+            <Button Content="BindingBasico" Command="{Binding IrABindingBasicoCommand}" Margin="20,0,0,0" Width="200" />
+
+            <!--Botón para navegar a la vista de ejemplo de enlace evento-Command.-->
+            <Button Content="EventToCommand" Command="{Binding IrAEventToCommandCommand}" Margin="20,0,0,0" Width="200" />
+
+            <!--Botón para navegar a la vista de ejemplo avanzado de mensajes.-->
+            <Button Content="MessagingAvanzado" Command="{Binding IrAMessagingAvanzadoCommand}" Margin="20,0,0,0" Width="200" />
+        </StackPanel>
+    </Grid>
+</views:ViewBase>
